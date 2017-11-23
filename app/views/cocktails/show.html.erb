@@ -1,0 +1,20 @@
+<div class= "container">
+  <h1><%= @cocktail.name %></h1>
+  Doses:
+
+  <% @cocktail.doses.each do |dose| %>
+    <div>
+      <%= dose.description %>
+      <%= dose.ingredient.name %>
+      <%= link_to(dose_path(dose), options = { method: :delete,
+        data: { confirm: "Are you sure?" } } ) do %>
+        <i class="fa fa-trash-o" aria-hidden="true"></i>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= render 'doses/form' %>
+
+  <%= link_to "Back", cocktails_path %>
+</div>
+
